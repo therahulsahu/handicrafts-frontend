@@ -1,3 +1,7 @@
 .dropdown, .dropend, .dropstart, .dropup {
     position: relative;
 }
+
+.sidebar {
+    height: 100vh;
+}

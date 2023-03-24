@@ -1,6 +1,6 @@
 main{
     display: flex;
-    background-color: red;
+    background-color: rgba(238, 226, 226, 0.575);
     flex-wrap: nowrap;
     height: 100vh;
     height: -webkit-fill-available;
