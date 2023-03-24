@@ -1,14 +1,16 @@
 import { NgModule } from "@angular/core";
 import { CoreModule } from "src/app/core/core.module";
 import { SharedModule } from "../sharedM/shared.module";
-import { ArticleComponent } from './article/article.component';
+import { CreateArticleComponent } from './create-article/create-article.component';
+import { ListArticlesComponent } from './list-articles/list-articles.component';
 
 @NgModule({
     declarations:[
-    ArticleComponent
+    CreateArticleComponent,
+    ListArticlesComponent
   ],
     imports:[SharedModule,CoreModule],
-    exports:[ArticleComponent],
+    exports:[ListArticlesComponent],
     providers:[]
 })
 export class ArticleModule{
