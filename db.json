@@ -1,0 +1,30 @@
+{
+  "articles": [
+    {
+      "productType": "shirt",
+      "brandName": "asd",
+      "mrp": "sadsa",
+      "mfgDate": "2023-03-30T18:30:00.000Z",
+      "articleNo": "dfdsf",
+      "specifications": {
+        "color": "dsfds",
+        "size": "dsf",
+        "quantity": 1
+      },
+      "id": 1
+    },
+    {
+      "productType": "pant",
+      "brandName": "fdsf",
+      "mrp": "ewrwe",
+      "mfgDate": "2023-03-29T18:30:00.000Z",
+      "articleNo": "werew",
+      "specifications": {
+        "color": "fgjh",
+        "size": "werew",
+        "quantity": 1
+      },
+      "id": 2
+    }
+  ]
+}
