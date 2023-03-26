@@ -10,8 +10,11 @@ export class CreateArticleComponent {
 
   articleForm: FormGroup;
 
+  productTypeList: any = ['shirt','pant'];
+
   constructor(private formBuilder: FormBuilder) {
     this.articleForm = this.formBuilder.group({
+      productType: ['', Validators.required],
       brandName: ['', Validators.required],
       mrp: ['', Validators.required],
       mfgDate: ['', Validators.required],
