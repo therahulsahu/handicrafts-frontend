@@ -1,70 +1,69 @@
-  <form class="form-horizontal" [formGroup]="articleForm" (ngSubmit)="onSubmit()">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">Create Article</h3>
-      </div>
-      <div class="panel-body">
+<div mat-dialog-title>
+  <h1>Add Article Form</h1>
+</div>
 
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="productType">Product Type:</label>
-          <select class="form-select" formControlName="productType" class="form-control">
-              <option disabled>Select Product Type</option>
-              <option *ngFor="let productType of productTypeList">{{productType}}</option>
-          </select>
-      </div>
+<form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content class="content">
 
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="brandName">Brand Name:</label>
-          <div class="col-sm-8">
-            <input id="brandName" type="text" class="form-control" formControlName="brandName">
-          </div>
-        </div>
-  
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="mrp">MRP</label>
-          <div class="col-sm-8">
-            <input id="mrp" type="text" class="form-control" formControlName="mrp">
-          </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="mfgDate">MFGDate</label>
-            <div class="col-sm-8 input-group date">
-              <input id="mfgDate" type="date" class="form-control" formControlName="mfgDate">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="articleNo">ArticleNo</label>
-            <div class="col-sm-8">
-              <input id="articleNo" type="text" class="form-control" formControlName="articleNo">
-            </div>
-        </div>
-
-        <div formGroupName="specifications">
-
-            <div class="form-group">
-              <label class="col-sm-12 text-center control-label" for="specifications">
-                Specifications
-              </label>
-              <div class="col-sm-14">
-                <input type="text" class="form-control" id="color"
-                    placeholder="Color" formControlName="color">
-              </div>
-              <div class="col-sm-14">
-                <input type="text" id="size" placeholder="Size"
-                    class="form-control" formControlName="size">
-              </div>
-              <div class="col-sm-14">
-                <input type="text" id="quantity" placeholder="Quantity"
-                    class="form-control" formControlName="quantity">
-              </div>
-            </div>
-        </div>
-  
-      </div>
-      <div class="panel-footer">
-        <button class="btn btn-primary click" type="submit">Submit</button>
-      </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Product Type</mat-label>
+        <mat-select formControlName="productType">
+          <mat-option *ngFor="let val of productTypeList" [value]="val">{{val}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
-  </form>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Brand Name</mat-label>
+        <input matInput type="text" placeholder="" formControlName="brandName">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>MRP</mat-label>
+        <input matInput type="text" placeholder="" formControlName="mrp">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>MFGDate</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="mfgDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Article No</mat-label>
+        <input matInput type="text" placeholder="" formControlName="articleNo">
+      </mat-form-field>
+    </div>
+
+    <div formGroupName="specifications" class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Color</mat-label>
+        <input matInput type="text" placeholder="" formControlName="color">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Size</mat-label>
+        <input matInput type="text" placeholder="" formControlName="size">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Quantity</mat-label>
+        <input matInput type="text" placeholder="" formControlName="quantity">
+      </mat-form-field>
+    </div>
+
+  </div>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </div>
+</form>
