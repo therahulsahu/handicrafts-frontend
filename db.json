@@ -25,6 +25,58 @@
         "quantity": 1
       },
       "id": 2
+    },
+    {
+      "productType": "pant",
+      "brandName": "fdgfd",
+      "mrp": "rewr",
+      "mfgDate": "2023-03-15T18:30:00.000Z",
+      "articleNo": "rtyt",
+      "specifications": {
+        "color": "gfh",
+        "size": "gfhg",
+        "quantity": 1
+      },
+      "id": 3
+    },
+    {
+      "productType": "pant",
+      "brandName": "ytry",
+      "mrp": "ghf",
+      "mfgDate": "2023-03-08T18:30:00.000Z",
+      "articleNo": "rtr",
+      "specifications": {
+        "color": "hgh",
+        "size": "hhjj",
+        "quantity": 1
+      },
+      "id": 4
+    },
+    {
+      "productType": "pant",
+      "brandName": "ret",
+      "mrp": "wrew",
+      "mfgDate": "2023-03-01T18:30:00.000Z",
+      "articleNo": "were",
+      "specifications": {
+        "color": "weer",
+        "size": "ewr",
+        "quantity": 1
+      },
+      "id": 5
+    },
+    {
+      "productType": "shirt",
+      "brandName": "hgj",
+      "mrp": "uyi",
+      "mfgDate": "2023-03-08T18:30:00.000Z",
+      "articleNo": "jkjk",
+      "specifications": {
+        "color": "rtyt",
+        "size": "ljk",
+        "quantity": 1
+      },
+      "id": 6
     }
   ]
 }

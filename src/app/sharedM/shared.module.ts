@@ -12,11 +12,12 @@ import { MatOptionModule, MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 
-
 import { HttpClientModule } from  '@angular/common/http';
 
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 @NgModule(
   {
@@ -25,12 +26,12 @@ import {MatPaginatorModule} from '@angular/material/paginator';
       CommonModule,ReactiveFormsModule,MatFormFieldModule,
       MatCardModule,MatToolbarModule,MatButtonModule,MatDialogModule,MatSelectModule,
       MatOptionModule,MatInputModule,MatNativeDateModule,MatDatepickerModule,MatDialogModule,
-      MatTableModule,MatPaginatorModule,HttpClientModule],
+      MatTableModule,MatPaginatorModule,MatSnackBarModule,HttpClientModule],
     exports: [FormsModule,
       CommonModule,ReactiveFormsModule,MatFormFieldModule,
       MatCardModule,MatToolbarModule,MatButtonModule,MatDialogModule,MatSelectModule,
       MatOptionModule,MatInputModule,MatNativeDateModule,MatDatepickerModule,MatDialogModule,
-      MatTableModule,MatPaginatorModule,HttpClientModule],
+      MatTableModule,MatPaginatorModule,MatSnackBarModule,HttpClientModule],
     providers: []
   }
 )
