@@ -12,9 +12,11 @@ import { MatOptionModule, MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 
+
 import { HttpClientModule } from  '@angular/common/http';
 
 import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule(
   {
@@ -22,13 +24,13 @@ import {MatTableModule} from '@angular/material/table';
     imports: [FormsModule,
       CommonModule,ReactiveFormsModule,MatFormFieldModule,
       MatCardModule,MatToolbarModule,MatButtonModule,MatDialogModule,MatSelectModule,
-      MatOptionModule,MatInputModule,MatNativeDateModule,MatDatepickerModule,MatDialogModule,HttpClientModule,
-      MatTableModule],
+      MatOptionModule,MatInputModule,MatNativeDateModule,MatDatepickerModule,MatDialogModule,
+      MatTableModule,MatPaginatorModule,HttpClientModule],
     exports: [FormsModule,
       CommonModule,ReactiveFormsModule,MatFormFieldModule,
       MatCardModule,MatToolbarModule,MatButtonModule,MatDialogModule,MatSelectModule,
-      MatOptionModule,MatInputModule,MatNativeDateModule,MatDatepickerModule,MatDialogModule,HttpClientModule,
-      MatTableModule],
+      MatOptionModule,MatInputModule,MatNativeDateModule,MatDatepickerModule,MatDialogModule,
+      MatTableModule,MatPaginatorModule,HttpClientModule],
     providers: []
   }
 )
