@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateArticleComponent } from 'src/app/articleM/create-article/create-article.component';
 
 @Component({
@@ -9,10 +9,16 @@ import { CreateArticleComponent } from 'src/app/articleM/create-article/create-a
 })
 export class HeaderComponent {
 
-  constructor(private _dialog: MatDialog) {}
+  dialogConfig = new MatDialogConfig();
+
+
+  constructor(private _dialog: MatDialog) {
+    this.dialogConfig.height = '500px';
+    this.dialogConfig.width = '400px';
+  }
 
   onCreateArticleClick() {
-    this._dialog.open(CreateArticleComponent);
+    this._dialog.open(CreateArticleComponent, this.dialogConfig);
   }
 
 }
