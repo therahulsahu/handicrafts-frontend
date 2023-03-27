@@ -11,6 +11,11 @@ import { ArticleService } from 'src/app/services/article.service';
 })
 export class ListArticlesComponent implements OnInit{
 
+  dataSource!: MatTableDataSource<any>;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
   constructor(private _articleService: ArticleService){}
 
   displayedColumns: string[] = [
@@ -24,12 +29,11 @@ export class ListArticlesComponent implements OnInit{
     'size',
     'quantity'
   ];
-  dataSource!: MatTableDataSource<any>;
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit(): void {
+      this._articleService.refreshNeeded.subscribe(
+        () => this.getArticles()
+      );
       this.getArticles();
   }
 
