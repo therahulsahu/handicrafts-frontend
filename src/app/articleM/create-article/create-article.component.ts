@@ -20,11 +20,11 @@ export class CreateArticleComponent {
     private _coreService: CoreService, private _dialogRef: DialogRef<CreateArticleComponent>, private _router: Router) {
     this.articleForm = this.formBuilder.group({
       productType: ['', Validators.required],
-      brandName: ['', Validators.required],
+      brand: ['', Validators.required],
       mrp: ['', Validators.required],
-      mfgDate: ['', Validators.required],
+      mfg: ['', Validators.required],
       articleNo: ['', Validators.required],
-      specifications: this.formBuilder.group({
+      specification: this.formBuilder.group({
         color: ['',Validators.required],
         size: ['',Validators.required],
         quantity: [1,Validators.required]

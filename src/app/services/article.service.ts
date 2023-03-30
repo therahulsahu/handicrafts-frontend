@@ -16,12 +16,13 @@ export class ArticleService {
   }
 
   addArticle(data: any) : Observable<any>{
-    return this._http.post('http://localhost:3000/articles',data).pipe(
-      tap(() => this._refreshNeeded.next())
-    )
+    return this._http.post('http://localhost:8080/api/addArticle',data).pipe(
+      tap(() => {
+        this._refreshNeeded.next();
+      }));
   }
 
   getArticle() : Observable<any>{
-    return this._http.get('http://localhost:3000/articles');
+    return this._http.get('http://localhost:8080/api/getAllArticles');
   }
 }
