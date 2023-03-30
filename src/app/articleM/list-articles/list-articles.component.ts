@@ -32,7 +32,13 @@ export class ListArticlesComponent implements OnInit{
 
   ngOnInit(): void {
       this._articleService.refreshNeeded.subscribe(
-        () => this.getArticles()
+        () => {
+          console.log('refreshing');
+          // put a 200 millisecond delay to allow the server to update the data
+          setTimeout(() => {
+            this.getArticles();
+          }, 200);
+        }
       );
       this.getArticles();
   }
