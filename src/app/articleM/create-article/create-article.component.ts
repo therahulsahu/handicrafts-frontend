@@ -19,6 +19,7 @@ export class CreateArticleComponent {
   constructor(private formBuilder: FormBuilder, private _articleService: ArticleService, 
     private _coreService: CoreService, private _dialogRef: DialogRef<CreateArticleComponent>, private _router: Router) {
     this.articleForm = this.formBuilder.group({
+      eanNo: ['', Validators.required],
       productType: ['', Validators.required],
       brand: ['', Validators.required],
       mrp: ['', Validators.required],
@@ -33,11 +34,9 @@ export class CreateArticleComponent {
   }
 
   onSubmit() {
-    console.log(this.articleForm.value);
     this._articleService.addArticle(this.articleForm.value).subscribe({
       next: (val:any) => {
-        this._coreService.openSnackBar('Employee added successfully');
-        console.log(val);
+        this._coreService.openSnackBar('Article added successfully');
         this._dialogRef.close();
       },
       error: (error: any) => {

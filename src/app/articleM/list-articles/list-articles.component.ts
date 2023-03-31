@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { CoreService } from 'src/app/core/core.service';
 import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
@@ -9,17 +10,17 @@ import { ArticleService } from 'src/app/services/article.service';
   templateUrl: './list-articles.component.html',
   styleUrls: ['./list-articles.component.css']
 })
-export class ListArticlesComponent implements OnInit{
+export class ListArticlesComponent implements OnInit {
 
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private _articleService: ArticleService){}
+  constructor(private _articleService: ArticleService, private _coreService: CoreService) { }
 
   displayedColumns: string[] = [
-    'id',
+    'eanNo',
     'productType',
     'brandName',
     'mrp',
@@ -27,7 +28,8 @@ export class ListArticlesComponent implements OnInit{
     'articleNo',
     'color',
     'size',
-    'quantity'
+    'quantity',
+    'actions'
   ];
 
   ngOnInit(): void {
@@ -43,16 +45,31 @@ export class ListArticlesComponent implements OnInit{
       this.getArticles();
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
   getArticles() {
     this._articleService.getArticle().subscribe({
-      next : (res :any) =>{
+      next: (res: any) => {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
       },
-      error: (err : any) => {
+      error: (err: any) => {
         console.log(err);
       }
     })
+  }
+
+  deleteArticle(id: number) {
+    this._articleService.deleteArticle(id).subscribe({
+      next: (res) => {
+        this._coreService.openSnackBar('Article deleted successfully');
+        this.getArticles();
+      },
+      error: console.log,
+    });
   }
 }

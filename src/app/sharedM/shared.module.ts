@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule, MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
 
 import { HttpClientModule } from  '@angular/common/http';
 
@@ -25,12 +26,12 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     imports: [FormsModule,
       CommonModule,ReactiveFormsModule,MatFormFieldModule,
       MatCardModule,MatToolbarModule,MatButtonModule,MatDialogModule,MatSelectModule,
-      MatOptionModule,MatInputModule,MatNativeDateModule,MatDatepickerModule,MatDialogModule,
+      MatOptionModule,MatInputModule,MatIconModule,MatNativeDateModule,MatDatepickerModule,MatDialogModule,
       MatTableModule,MatPaginatorModule,MatSnackBarModule,HttpClientModule],
     exports: [FormsModule,
       CommonModule,ReactiveFormsModule,MatFormFieldModule,
       MatCardModule,MatToolbarModule,MatButtonModule,MatDialogModule,MatSelectModule,
-      MatOptionModule,MatInputModule,MatNativeDateModule,MatDatepickerModule,MatDialogModule,
+      MatOptionModule,MatInputModule,MatIconModule,MatNativeDateModule,MatDatepickerModule,MatDialogModule,
       MatTableModule,MatPaginatorModule,MatSnackBarModule,HttpClientModule],
     providers: []
   }
