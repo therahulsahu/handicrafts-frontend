@@ -25,4 +25,15 @@ export class ArticleService {
   getArticle() : Observable<any>{
     return this._http.get('http://localhost:8080/api/getAllArticles');
   }
+
+  uploadFile(data: any) : Observable<any>{
+    return this._http.post('http://localhost:8080/api/upload',data).pipe(
+      tap(() => {
+        this._refreshNeeded.next();
+      }));
+  }
+
+  deleteArticle(id:any): Observable<any> {
+    return this._http.delete(`http://localhost:8080/api/deleteArticle/${id}`);
+  }
 }
