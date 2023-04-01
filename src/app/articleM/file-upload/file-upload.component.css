@@ -1,5 +1,16 @@
-.content {
-    padding-top: 10px;
+.download-button {
+    padding: 10px;
+    margin-right: 16px;
+}
+
+.print-button {
+    padding: 10px;
+    margin-right: 16px;
+}
+
+.cancel-button {
+    padding: 10px;
+    margin-left: auto;
 }
 
 
