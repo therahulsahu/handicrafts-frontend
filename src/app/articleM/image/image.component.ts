@@ -1,5 +1,5 @@
 import { DialogRef } from '@angular/cdk/dialog';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
 import { ArticleService } from 'src/app/services/article.service';
@@ -14,6 +14,8 @@ export class ImageComponent {
 
   imageUrl: SafeUrl | undefined;
   imageSrc: string | undefined;
+
+  @ViewChild('printFrame') printFrame: ElementRef | undefined;
 
 
   constructor(private _articleService: ArticleService, private _dialogRef: DialogRef<ImageComponent>, 
@@ -47,6 +49,21 @@ export class ImageComponent {
       document.body.removeChild(link);
       this._dialogRef.close();
     }
+  }
+
+  print() {
+    if (!this.printFrame) {
+      console.error('Print frame not found.');
+      return;
+    }
+    const printContent = `<html><body><img src="${this.imageSrc}"></body></html>`;
+    const iframe = this.printFrame.nativeElement;
+    const doc = iframe.contentWindow.document;
+    doc.open();
+    doc.write(printContent);
+    doc.close();
+    iframe.contentWindow.focus();
+    iframe.contentWindow.print();
   }
 
 }

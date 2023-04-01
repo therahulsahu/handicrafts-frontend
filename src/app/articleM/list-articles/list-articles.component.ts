@@ -77,7 +77,7 @@ export class ListArticlesComponent implements OnInit {
 
   createIndividualBarCode(id : any) {
    const dialogConfig = new MatDialogConfig();
-   dialogConfig.height = '250px';
+   dialogConfig.height = '450px';
    dialogConfig.width = '500px';
    this._dialog.open(ImageComponent, {
     ...dialogConfig,
