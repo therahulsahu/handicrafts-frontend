@@ -1,4 +1,4 @@
-<div mat-dialog-content class="content">
+<div mat-dialog-content>
     <img [src]="imageSrc" *ngIf="imageSrc">
     <button mat-raised-button (click)="downloadImage()" *ngIf="imageSrc" class="download-button">Download</button>
     <iframe #printFrame style="display:none;"></iframe>
