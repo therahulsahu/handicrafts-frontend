@@ -1,5 +1,5 @@
 import { DialogRef } from '@angular/cdk/dialog';
-import { Component, Inject } from '@angular/core';
+import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CoreService } from 'src/app/core/core.service';
@@ -14,6 +14,8 @@ export class FileUploadComponent {
 
   imageUrl: any;
   imageSrc: string | undefined;
+
+  @ViewChild('printFrame') printFrame: ElementRef | undefined;
 
   constructor(private _articleService: ArticleService, private _coreService: CoreService,
     private _dialogRef: DialogRef<FileUploadComponent>, private _router: Router,
@@ -72,4 +74,20 @@ export class FileUploadComponent {
       this._dialogRef.close();
     }
   }
+  
+  print() {
+    if (!this.printFrame) {
+      console.error('Print frame not found.');
+      return;
+    }
+    const printContent = `<html><body><img src="${this.imageSrc}"></body></html>`;
+    const iframe = this.printFrame.nativeElement;
+    const doc = iframe.contentWindow.document;
+    doc.open();
+    doc.write(printContent);
+    doc.close();
+    iframe.contentWindow.focus();
+    iframe.contentWindow.print();
+  }
+
 }
