@@ -1,4 +1,4 @@
-<div mat-dialog-title>
+<!-- <div mat-dialog-title>
     <h1>Upload Excel</h1>
 </div>
 
@@ -9,3 +9,25 @@
     </div>
 </div>
 
+<img [src]="imageUrl" />
+<button (click)="download()">Download</button> -->
+
+<div mat-dialog-title>
+    <h1>Upload Excel</h1>
+</div>
+
+<input type="file" (change)="uploadFile($event)" accept=".xlsx">
+
+<div mat-dialog-content class="content">
+    <img [src]="imageSrc" *ngIf="imageSrc && data.extraData ==='bulkBarCode'">
+</div>
+
+<button (click)="downloadImage()" *ngIf="imageSrc && data.extraData ==='bulkBarCode'">Download PNG</button>
+
+<div>
+    <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+</div>
+
+
+<!-- <a [href]="imageUrl" download="image.png" #downloadLink hidden></a>
+<button (click)="downloadLink.click()">Download</button> -->

@@ -1,7 +1,7 @@
 <div class="main-body">
 
     <mat-form-field appearance="outline">
-      <mat-label>Your name</mat-label>
+      <mat-label>Search key</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
     </mat-form-field>
 
@@ -58,7 +58,7 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
         <td mat-cell *matCellDef="let row">
-          <button mat-icon-button color="primary">
+          <button mat-icon-button (click)="createIndividualBarCode(row.eanNo)" color="primary">
             <mat-icon>print</mat-icon>
           </button>
           <button mat-icon-button (click)="deleteArticle(row.eanNo)" color="warn">

@@ -1,5 +1,6 @@
 import { DialogRef } from '@angular/cdk/dialog';
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CoreService } from 'src/app/core/core.service';
 import { ArticleService } from 'src/app/services/article.service';
@@ -11,21 +12,64 @@ import { ArticleService } from 'src/app/services/article.service';
 })
 export class FileUploadComponent {
 
-  constructor(private _articleService: ArticleService, private _coreService: CoreService, private _dialogRef: DialogRef<FileUploadComponent>, private _router: Router) {}
+  imageUrl: any;
+  imageSrc: string | undefined;
+
+  constructor(private _articleService: ArticleService, private _coreService: CoreService,
+    private _dialogRef: DialogRef<FileUploadComponent>, private _router: Router,
+     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   uploadFile(event: any) {
     const file = event.target.files[0];
     const formData = new FormData();
     formData.append('file', file);
-    this._articleService.uploadFile(formData).subscribe({
-      next: (val:any) => {
-        this._coreService.openSnackBar('Article added successfully');
-        this._dialogRef.close();
-      },
-      error: (error: any) => {
-        console.error(error);
-      }
-    });
+    if(this.data.extraData == 'bulkBarCode') {
+      console.log(this.data.extraData);
+      this._articleService.bulkBarCode(formData).subscribe({
+        next: (blob: Blob) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(blob);
+          reader.onloadend = () => {
+            if (reader.result) { // Check if reader.result is not null
+              const base64data = reader.result.toString();
+              this.imageSrc = base64data;
+            }
+          };
+        },
+        error: (error: any) => {
+          console.error(error);
+        }
+      });
+    }
+    else {
+      console.log(this.data.extraData);
+      this._articleService.addBulkArticle(formData).subscribe({
+        next: (blob: Blob) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(blob);
+          reader.onloadend = () => {
+            if (reader.result) { // Check if reader.result is not null
+              const base64data = reader.result.toString();
+              this.imageSrc = base64data;
+            }
+          };
+        },
+        error: (error: any) => {
+          console.error(error);
+        }
+      });
+    }
   }
 
+  downloadImage() {
+    const link = document.createElement('a');
+    link.download = 'image.png';
+    if (typeof this.imageSrc === 'string') {
+      link.href = this.imageSrc;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      this._dialogRef.close();
+    }
+  }
 }

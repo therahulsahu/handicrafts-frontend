@@ -10,22 +10,33 @@ import { FileUploadComponent } from 'src/app/articleM/file-upload/file-upload.co
 })
 export class HeaderComponent {
 
-  dialogConfigCreate = new MatDialogConfig();
-  dialogConfigUploadFile = new MatDialogConfig();
-
-  constructor(private _dialog: MatDialog) {
-    this.dialogConfigCreate.height = '500px';
-    this.dialogConfigCreate.width = '400px';
-    this.dialogConfigUploadFile.height = '250px';
-    this.dialogConfigUploadFile.width = '500px'
-  }
+  constructor(private _dialog: MatDialog) {}
 
   onCreateArticleClick() {
-    this._dialog.open(CreateArticleComponent, this.dialogConfigCreate);
+    const dialogConfigCreate = new MatDialogConfig();
+    dialogConfigCreate.height = '500px';
+    dialogConfigCreate.width = '400px';
+    this._dialog.open(CreateArticleComponent, dialogConfigCreate);
   }
 
-  onUploadFileClick() {
-    this._dialog.open(FileUploadComponent, this.dialogConfigUploadFile);
+  onBulkBarCodeClick() {
+    const dialogConfigUploadFile = new MatDialogConfig();
+    dialogConfigUploadFile.height = '250px';
+    dialogConfigUploadFile.width = '500px';
+    this._dialog.open(FileUploadComponent, {
+      ...dialogConfigUploadFile,
+      data: { extraData: 'bulkBarCode' }
+    });
+  }
+
+  onBulkArticleClick() {
+    const dialogConfigUploadFile = new MatDialogConfig();
+    dialogConfigUploadFile.height = '250px';
+    dialogConfigUploadFile.width = '500px';
+    this._dialog.open(FileUploadComponent, {
+      ...dialogConfigUploadFile,
+      data: { extraData: 'bulkArticleAdd' }
+    });
   }
 
 }
