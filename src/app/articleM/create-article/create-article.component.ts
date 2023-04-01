@@ -36,6 +36,7 @@ export class CreateArticleComponent {
   onSubmit() {
     this._articleService.addArticle(this.articleForm.value).subscribe({
       next: (val:any) => {
+        console.log(val);
         this._coreService.openSnackBar('Article added successfully');
         this._dialogRef.close();
       },

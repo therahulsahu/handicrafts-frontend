@@ -4,6 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CoreService } from 'src/app/core/core.service';
 import { ArticleService } from 'src/app/services/article.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ImageComponent } from '../image/image.component';
 
 @Component({
   selector: 'app-list-articles',
@@ -17,7 +19,7 @@ export class ListArticlesComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private _articleService: ArticleService, private _coreService: CoreService) { }
+  constructor(private _articleService: ArticleService, private _coreService: CoreService, private _dialog: MatDialog) { }
 
   displayedColumns: string[] = [
     'eanNo',
@@ -71,5 +73,15 @@ export class ListArticlesComponent implements OnInit {
       },
       error: console.log,
     });
+  }
+
+  createIndividualBarCode(id : any) {
+   const dialogConfig = new MatDialogConfig();
+   dialogConfig.height = '250px';
+   dialogConfig.width = '500px';
+   this._dialog.open(ImageComponent, {
+    ...dialogConfig,
+    data: { extraData: id }
+  }); 
   }
 }

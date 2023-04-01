@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject, tap } from 'rxjs';
 
@@ -11,29 +11,47 @@ export class ArticleService {
 
   private _refreshNeeded = new Subject<void>();
 
-  get refreshNeeded(){
+  get refreshNeeded() {
     return this._refreshNeeded;
   }
 
-  addArticle(data: any) : Observable<any>{
-    return this._http.post('http://localhost:8080/api/addArticle',data).pipe(
+  addArticle(data: any): Observable<any> {
+    return this._http.post('http://localhost:8080/api/addArticle', data).pipe(
       tap(() => {
         this._refreshNeeded.next();
       }));
   }
 
-  getArticle() : Observable<any>{
+  getArticle(): Observable<any> {
     return this._http.get('http://localhost:8080/api/getAllArticles');
   }
 
-  uploadFile(data: any) : Observable<any>{
-    return this._http.post('http://localhost:8080/api/upload',data).pipe(
-      tap(() => {
-        this._refreshNeeded.next();
-      }));
+  generateIndividualBarCode(id: any): Observable<Blob> {
+    return this._http.get<any>(`http://localhost:8080/api/generateBarcode/${id}`, {
+      responseType: 'blob' as 'json',
+    });
   }
 
-  deleteArticle(id:any): Observable<any> {
+  bulkBarCode(data: any): Observable<Blob> {
+    return this._http.post<any>('http://localhost:8080/api/bulk', data, {
+      responseType: 'blob' as 'json',
+    });
+  }
+
+  addBulkArticle(data: any): Observable<any> {
+    return this._http.post<Blob>('http://localhost:8080/api/upload', data, {
+      responseType: 'blob' as 'json',
+    });
+  }
+
+  // addBulkArticle(data: any): Observable<any> {
+  //   return this._http.post<Blob>('http://localhost:8080/api/upload', data).pipe(
+  //     tap(() => {
+  //       this._refreshNeeded.next();
+  //     }));
+  // }
+
+  deleteArticle(id: any): Observable<any> {
     return this._http.delete(`http://localhost:8080/api/deleteArticle/${id}`);
   }
 }
