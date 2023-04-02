@@ -4,6 +4,7 @@ import { CreateArticleComponent } from './create-article/create-article.componen
 import { ListArticlesComponent } from './list-articles/list-articles.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { ImageComponent } from './image/image.component';
+import { DatePipe } from "@angular/common";
 
 @NgModule({
     declarations:[
@@ -13,7 +14,7 @@ import { ImageComponent } from './image/image.component';
     ImageComponent
   ],
     imports:[SharedModule],
-    providers:[]
+    providers:[DatePipe]
 })
 export class ArticleModule{
 
