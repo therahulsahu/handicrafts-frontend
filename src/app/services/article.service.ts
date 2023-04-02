@@ -41,15 +41,11 @@ export class ArticleService {
   addBulkArticle(data: any): Observable<any> {
     return this._http.post<Blob>('http://localhost:8080/api/upload', data, {
       responseType: 'blob' as 'json',
-    });
+    }).pipe(
+      tap(() => {
+        this._refreshNeeded.next();
+      }));
   }
-
-  // addBulkArticle(data: any): Observable<any> {
-  //   return this._http.post<Blob>('http://localhost:8080/api/upload', data).pipe(
-  //     tap(() => {
-  //       this._refreshNeeded.next();
-  //     }));
-  // }
 
   deleteArticle(id: any): Observable<any> {
     return this._http.delete(`http://localhost:8080/api/deleteArticle/${id}`);

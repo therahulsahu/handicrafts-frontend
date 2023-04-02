@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateArticleComponent } from 'src/app/articleM/create-article/create-article.component';
 import { FileUploadComponent } from 'src/app/articleM/file-upload/file-upload.component';
+import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ import { FileUploadComponent } from 'src/app/articleM/file-upload/file-upload.co
 })
 export class HeaderComponent {
 
-  constructor(private _dialog: MatDialog) {}
+  constructor(private _articleService: ArticleService, private _dialog: MatDialog) {}
 
   onCreateArticleClick() {
     const dialogConfigCreate = new MatDialogConfig();
@@ -21,8 +22,8 @@ export class HeaderComponent {
 
   onBulkBarCodeClick() {
     const dialogConfigUploadFile = new MatDialogConfig();
-    dialogConfigUploadFile.height = '250px';
-    dialogConfigUploadFile.width = '500px';
+    dialogConfigUploadFile.height = '500px';
+    dialogConfigUploadFile.width = '1300px';
     this._dialog.open(FileUploadComponent, {
       ...dialogConfigUploadFile,
       data: { extraData: 'bulkBarCode' }
