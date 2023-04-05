@@ -13,6 +13,7 @@ export class FileUploadComponent {
 
   imageUrl: any;
   imageSrc: string | undefined;
+  pdfUrl: any;
 
   @ViewChild('printFrame') printFrame: ElementRef | undefined;
 
@@ -28,14 +29,16 @@ export class FileUploadComponent {
       console.log(this.data.extraData);
       this._articleService.bulkBarCode(formData).subscribe({
         next: (blob: Blob) => {
-          const reader = new FileReader();
-          reader.readAsDataURL(blob);
-          reader.onloadend = () => {
-            if (reader.result) { // Check if reader.result is not null
-              const base64data = reader.result.toString();
-              this.imageSrc = base64data;
-            }
-          };
+          // const reader = new FileReader();
+          // reader.readAsDataURL(blob);
+          // reader.onloadend = () => {
+          //   if (reader.result) { // Check if reader.result is not null
+          //     const base64data = reader.result.toString();
+          //     this.imageSrc = base64data;
+          //   }
+          // };
+          let url = window.URL.createObjectURL(blob);
+          this.pdfUrl = url;
         },
         error: (error: any) => {
           console.error(error);
@@ -75,19 +78,19 @@ export class FileUploadComponent {
     }
   }
 
-  print() {
-    if (!this.printFrame) {
-      console.error('Print frame not found.');
-      return;
-    }
-    const printContent = `<html><body><img src="${this.imageSrc}"></body></html>`;
-    const iframe = this.printFrame.nativeElement;
-    const doc = iframe.contentWindow.document;
-    doc.open();
-    doc.write(printContent);
-    doc.close();
-    iframe.contentWindow.focus();
-    iframe.contentWindow.print();
-  }
+  // print() {
+  //   if (!this.printFrame) {
+  //     console.error('Print frame not found.');
+  //     return;
+  //   }
+  //   const printContent = `<html><body><img src="${this.imageSrc}"></body></html>`;
+  //   const iframe = this.printFrame.nativeElement;
+  //   const doc = iframe.contentWindow.document;
+  //   doc.open();
+  //   doc.write(printContent);
+  //   doc.close();
+  //   iframe.contentWindow.focus();
+  //   iframe.contentWindow.print();
+  // }
 
 }

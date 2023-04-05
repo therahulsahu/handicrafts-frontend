@@ -19,6 +19,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { NgxExtendedPdfViewerModule } from "ngx-extended-pdf-viewer";
 
 @NgModule(
   {
@@ -27,12 +28,12 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
       CommonModule,ReactiveFormsModule,MatFormFieldModule,
       MatCardModule,MatToolbarModule,MatButtonModule,MatDialogModule,MatSelectModule,
       MatOptionModule,MatInputModule,MatIconModule,MatNativeDateModule,MatDatepickerModule,MatDialogModule,
-      MatTableModule,MatPaginatorModule,MatSnackBarModule,HttpClientModule],
+      MatTableModule,MatPaginatorModule,MatSnackBarModule,NgxExtendedPdfViewerModule,HttpClientModule],
     exports: [FormsModule,
       CommonModule,ReactiveFormsModule,MatFormFieldModule,
       MatCardModule,MatToolbarModule,MatButtonModule,MatDialogModule,MatSelectModule,
       MatOptionModule,MatInputModule,MatIconModule,MatNativeDateModule,MatDatepickerModule,MatDialogModule,
-      MatTableModule,MatPaginatorModule,MatSnackBarModule,HttpClientModule],
+      MatTableModule,MatPaginatorModule,MatSnackBarModule,NgxExtendedPdfViewerModule,HttpClientModule],
     providers: []
   }
 )
