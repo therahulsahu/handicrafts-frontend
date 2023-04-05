@@ -4,15 +4,16 @@
     </div>
 
     <input type="file" (change)="uploadFile($event)" accept=".xlsx">
+    <ngx-extended-pdf-viewer [src]="pdfUrl" *ngIf="pdfUrl && data.extraData ==='bulkBarCode'"></ngx-extended-pdf-viewer>
 
-    <img [src]="imageSrc" *ngIf="imageSrc && data.extraData ==='bulkBarCode'">
+    <!-- <img [src]="imageSrc" *ngIf="imageSrc && data.extraData ==='bulkBarCode'"> -->
 
-    <button mat-raised-button (click)="downloadImage()" *ngIf="imageSrc && data.extraData ==='bulkBarCode'"
-        class="download-button">Download</button>
+    <!-- <button mat-raised-button (click)="downloadImage()" *ngIf="imageSrc && data.extraData ==='bulkBarCode'"
+        class="download-button">Download</button> -->
 
-    <iframe #printFrame style="display:none;"></iframe>
-    <button mat-raised-button (click)="print()" *ngIf="imageSrc && data.extraData ==='bulkBarCode'"
-        class="print-button">Print Image</button>
+    <!-- <iframe #printFrame style="display:none;"></iframe> -->
+    <!-- <button mat-raised-button (click)="uploadFile($event)" *ngIf="pdfUrl && data.extraData ==='bulkBarCode'"
+        class="print-button">Print Image</button> -->
 
     <button mat-raised-button type="button" [mat-dialog-close]="false"
         class="cancel-button mat-align-self-end">Cancel</button>

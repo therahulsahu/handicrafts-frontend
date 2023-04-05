@@ -1,8 +1,8 @@
 <div mat-dialog-content>
     <img [src]="imageSrc" *ngIf="imageSrc">
-    <button mat-raised-button (click)="downloadImage()" *ngIf="imageSrc" class="download-button">Download</button>
-    <iframe #printFrame style="display:none;"></iframe>
-    <button mat-raised-button (click)="print()" class="print-button">Print Image</button>
+    <div><iframe #printFrame style="display:none;"></iframe></div>
+    <button mat-raised-button type="button"(click)="print()" class="print-button">Print Image</button>
+    <button mat-raised-button type="button" (click)="downloadImage()" *ngIf="imageSrc" class="download-button">Download</button>
     <button mat-raised-button type="button" [mat-dialog-close]="false"
-        class="cancel-button mat-align-self-end">Cancel</button>
+    class="cancel-button mat-align-self-end">Cancel</button>
 </div>
