@@ -45,7 +45,7 @@ export class FileUploadComponent {
         }
       });
     }
-    else {
+    else if (this.data.extraData == 'bulkArticleAdd') {
       console.log(this.data.extraData);
       this._articleService.addBulkArticle(formData).subscribe({
         next: (blob: Blob) => {
@@ -58,6 +58,18 @@ export class FileUploadComponent {
               this._dialogRef.close();
             }
           };
+        },
+        error: (error: any) => {
+          console.error(error);
+        }
+      });
+    }
+    else {
+      console.log(this.data.extraData);
+      this._articleService.bulkMyntraBarCode(formData).subscribe({
+        next: (blob: Blob) => {
+          let url = window.URL.createObjectURL(blob);
+          this.pdfUrl = url;
         },
         error: (error: any) => {
           console.error(error);

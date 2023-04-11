@@ -47,6 +47,12 @@ export class ArticleService {
       }));
   }
 
+  bulkMyntraBarCode(data: any): Observable<any> {
+    return this._http.post<any>('http://localhost:8080/api/bul', data, {
+      responseType: 'blob' as 'json',
+    });
+  }
+
   deleteArticle(id: any): Observable<any> {
     return this._http.delete(`http://localhost:8080/api/deleteArticle/${id}`);
   }
