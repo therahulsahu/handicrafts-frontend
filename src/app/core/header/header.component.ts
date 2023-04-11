@@ -40,4 +40,14 @@ export class HeaderComponent {
     });
   }
 
+  onBulkMyntraClick() {
+    const dialogConfigUploadFile = new MatDialogConfig();
+    dialogConfigUploadFile.height = '250px';
+    dialogConfigUploadFile.width = '500px';
+    this._dialog.open(FileUploadComponent, {
+      ...dialogConfigUploadFile,
+      data: { extraData: 'bulkMyntraBarCode' }
+    });
+  }
+
 }
