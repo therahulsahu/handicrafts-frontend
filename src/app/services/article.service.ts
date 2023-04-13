@@ -48,7 +48,7 @@ export class ArticleService {
   }
 
   bulkMyntraBarCode(data: any): Observable<any> {
-    return this._http.post<any>('http://localhost:8080/api/bul', data, {
+    return this._http.post<any>('http://localhost:8080/api/bulk', data, {
       responseType: 'blob' as 'json',
     });
   }
