@@ -5,6 +5,7 @@
 
     <input type="file" (change)="uploadFile($event)" accept=".xlsx">
     <ngx-extended-pdf-viewer [src]="pdfUrl" *ngIf="pdfUrl && data.extraData ==='bulkBarCode'"></ngx-extended-pdf-viewer>
+    <ngx-extended-pdf-viewer [src]="pdfUrl" *ngIf="pdfUrl && data.extraData ==='bulkMyntraBarCode'"></ngx-extended-pdf-viewer>
 
     <!-- <img [src]="imageSrc" *ngIf="imageSrc && data.extraData ==='bulkBarCode'"> -->
 
